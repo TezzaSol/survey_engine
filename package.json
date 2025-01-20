@@ -4,13 +4,12 @@
   "description": "Patient survey feedback and NPS score",
   "main": "index.js",
   "scripts": {
-    "start": "npx ts-node dist/src/main.js",
+    "start": "npx ts-node node dist/src/main.js",
     "start:dev": "nest start --watch",
     "copy-assets": "copyfiles -u 1 \"src/public/**/*\" \"src/views/**/*\" dist",
     "test": "jest",
     "build": "tsc && npm run copy-assets",
     "start:prod": "npm run build && npm run start"
-    
   },
   "keywords": [
     "Survey Distribution",
