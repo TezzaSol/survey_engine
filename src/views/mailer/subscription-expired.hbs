@@ -1,0 +1,18 @@
+    {{> mailHeader }}
+      <div class="email-body">
+        <p >Hi {{user}},</p>
+        <p>
+          Your subscription for {{appName}} has expired, but you can reactivate it anytime to keep using your favorite features!
+        </p>
+
+        <p>
+         Click here to renew: <a href="{{subscriptionUrl}}">Renew Subscription</a>
+        </p>
+
+
+        <p>
+          We hope to see you back soon!
+        </p>
+        <p>The {{appName}} Team</p>
+      </div>
+{{> mailFooter }}

@@ -1,0 +1,271 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  SUPERADMIN
+  USER
+  ADMIN
+  TEAMMATE
+  OBSERVER
+}
+
+enum Status {
+  PENDING
+  ACTIVE
+  INACTIVE
+}
+
+enum SurveyStatus {
+  DRAFT
+  PUBLISHED
+  ACTIVE
+  CLOSED
+}
+
+enum SubscriptionPlan {
+  BASIC
+  GROWTH
+  SCALE
+}
+
+enum BillingCycle {
+  Trial
+  Monthly
+  Yearly
+}
+
+enum SurveyQuestionType {
+  interval_survey
+  ordinal_survey
+  ratio_survey
+  binary_survey
+  open_ended_survey
+  multiple_choice_survey
+  hybrid_survey
+  nps_survey
+}
+
+model Organization {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  orgName    String?
+  orgEmail   String?
+  orgWebsite String?
+  orgAddress String?
+  logoUrl    String?
+  themeColor String?
+  user       User    @relation(fields: [userId], references: [id])
+  userId     String  @unique @db.ObjectId
+}
+
+model User {
+  id                     String            @id @default(auto()) @map("_id") @db.ObjectId
+  adminId                String?
+  email                  String            @unique
+  password               String?
+  firstname              String?
+  lastname               String?
+  phoneNumber            String?
+  country                String?
+  department             String?
+  loggedInActivity       Boolean?          @default(false)
+  organization           Organization?
+  role                   Role              @default(ADMIN)
+  status                 Status            @default(INACTIVE)
+  createdAt              DateTime          @default(now())
+  updatedAt              DateTime          @updatedAt
+  isVerified             Boolean           @default(false)
+  verificationCode       Int?
+  verificationCodeExpiry DateTime?         @default(now())
+  subscriptionPlan       SubscriptionPlan? @default(BASIC)
+  trialStartDate         DateTime? // Date when the free trial started
+  trialEndDate           DateTime? // Date when the free trial started
+  isTrialActive          Boolean           @default(true)
+  surveys                Survey[]          @relation("UserSurveys")
+  isTwoFactorCodeActive  Boolean?          @default(false)
+  twoFactorCode          String?
+  twoFactorExpiry        DateTime?
+  isAccountArchived      Boolean?          @default(false)
+  loginActivities        LoginActivity[] // One-to-many relation with LoginActivity
+  themeColor             Json? // @default("{\"primaryColor\": \"#373737\", \"secondaryColor\": \"#AA0028\"}")
+  payments               Payment[]
+  surveyCount            Int               @default(0)
+  platforms              Platform[]
+}
+
+model Option {
+  id         String                 @id @default(auto()) @map("_id") @db.ObjectId
+  value      Json
+  label      String
+  question   Question               @relation(fields: [questionId], references: [id])
+  questionId String                 @db.ObjectId
+  responses  SurveyResponseOption[] //@relation(onDelete: Cascade) // Cascade delete
+}
+
+model Question {
+  id            String              @id @default(auto()) @map("_id") @db.ObjectId
+  question      String
+  questionType  SurveyQuestionType?
+  options       Option[]
+  survey        Survey              @relation(fields: [surveyId], references: [id])
+  surveyId      String              @db.ObjectId
+  responses     SurveyResponse[]
+  nps           Boolean?            @default(false)
+  required      Boolean?            @default(false)
+  responseCount Int                 @default(0) // Track responses for this question
+}
+
+model Survey {
+  id            String              @id @default(auto()) @map("_id") @db.ObjectId
+  adminId       String?
+  heading       String
+  subHeading    String
+  questionType  SurveyQuestionType //String
+  questions     Question[]
+  status        SurveyStatus?       @default(DRAFT)
+  responseCount Int                 @default(0) // Track total responses for the survey
+  publishUrl    String?
+  publishedAt   DateTime?
+  integrations  SurveyIntegration[]
+  createdBy     User                @relation(fields: [createdById], references: [id], name: "UserSurveys")
+  createdById   String              @db.ObjectId
+  createdAt     DateTime?           @default(now())
+  updatedAt     DateTime?           @updatedAt
+  reviews       Review[]
+}
+
+model List {
+  id         String      @id @default(auto()) @map("_id") @db.ObjectId
+  name       String
+  adminId    String?
+  recipients Recipient[]
+  createdAt  DateTime?   @default(now())
+  updatedAt  DateTime?   @updatedAt
+}
+
+model SurveyResponse {
+  id          String                 @id @default(auto()) @map("_id") @db.ObjectId
+  question    Question               @relation(fields: [questionId], references: [id])
+  questionId  String                 @db.ObjectId
+  options     SurveyResponseOption[] // Link to the intermediate table
+  recipient   Recipient              @relation(fields: [recipientId], references: [id])
+  recipientId String                 @db.ObjectId
+  createdAt   DateTime?              @default(now())
+  updatedAt   DateTime?              @updatedAt
+}
+
+model SurveyResponseOption {
+  id               String         @id @default(auto()) @map("_id") @db.ObjectId
+  surveyResponse   SurveyResponse @relation(fields: [surveyResponseId], references: [id], onDelete: Cascade)
+  surveyResponseId String         @db.ObjectId
+  option           Option         @relation(fields: [optionId], references: [id], onDelete: Cascade)
+  optionId         String         @db.ObjectId
+}
+
+model Recipient {
+  id              String           @id @default(auto()) @map("_id") @db.ObjectId
+  firstname       String
+  lastname        String
+  phoneNumber     String?
+  email           String
+  list            List             @relation(fields: [listId], references: [id])
+  listId          String           @db.ObjectId
+  surveyResponses SurveyResponse[]
+  deviceType      String?
+  createdAt       DateTime?        @default(now())
+  updatedAt       DateTime?        @updatedAt
+}
+
+model LoginActivity {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  loginTime  DateTime @default(now())
+  ipAddress  String?
+  deviceInfo String?
+  location   String?
+  successful Boolean  @default(true)
+  userId     String   @db.ObjectId
+  user       User     @relation(fields: [userId], references: [id]) // Relating to the User model
+}
+
+model Payment {
+  id                    String       @id @default(auto()) @map("_id") @db.ObjectId
+  email                 String
+  amount                String
+  transactionId         String
+  paymentStatus         String
+  txRef                 String
+  flowRef               String
+  chargedAmount         String
+  chargeResponseCode    String
+  chargeResponseMessage String
+  currency              String
+  paymentType           String
+  plan                  String
+  isActive              Boolean      @default(true)
+  billingCycle          BillingCycle @default(Trial)
+  createdBy             User         @relation(fields: [createdById], references: [id])
+  createdById           String       @db.ObjectId
+  createdAt             DateTime?    @default(now())
+}
+
+model Integration {
+  id                String              @id @default(auto()) @map("_id") @db.ObjectId
+  name              String // e.g., 'Google Reviews', 'Slack'
+  description       String? // Optional description of the integration
+  isActive          Boolean             @default(true) // Indicates if the integration is available
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  SurveyIntegration SurveyIntegration[]
+}
+
+model SurveyIntegration {
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  surveyId      String      @db.ObjectId
+  survey        Survey      @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+  integrationId String      @db.ObjectId
+  integration   Integration @relation(fields: [integrationId], references: [id], onDelete: Cascade)
+  data          Json // Flexible field to store app-specific data, e.g., Google Review's `rating` and `text`
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model Platform {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  url           String?
+  isActive      Boolean  @default(true)
+  accessToken   String?
+  refreshToken  String?
+  tokenExpireAt String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  user          User     @relation(fields: [userId], references: [id])
+  userId        String   @db.ObjectId
+
+  @@unique([name, userId])
+}
+
+model Review {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  note        String?
+  rating      Int?
+  email       String?
+  countryCode String?
+  phoneNumber String?
+  survey      Survey   @relation(fields: [surveyId], references: [id])
+  surveyId    String   @db.ObjectId
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  recipientId String?  @db.ObjectId
+  nps         Int
+  npsType     String?
+  adminId     String
+}

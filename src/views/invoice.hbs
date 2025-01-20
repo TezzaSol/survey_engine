@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    p {
+      margin: 20px 0;
+    }
+    .hero-red {
+      text-align: center;
+      background-color: #aa0028;
+      padding: 20px 20px;
+      color: white;
+    }
+
+    .tx-details {
+      padding: 20px 0px;
+      text-align: center;
+    }
+
+    .tx-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 0px;
+    }
+
+    .gray-rule {
+      color: gray;
+    }
+
+  </style>
+</head>
+<body>
+
+   <img src="/img/tezza-logo-1.png" style="display: block; margin: auto;" />
+  <div style="">
+
+  <div style="border: gray 1px solid;">
+    <div class="hero-red">
+        <h2>Payment Successful </h2>
+        You have successfully subscribed to {{payment.plan}} Plan at </br>
+        {{payment.currency}} {{payment.chargedAmount}}
+    </div>
+    <div class="tx-details"> Transaction Details </div>
+    <div style="padding: 10px 10px;">
+        <div class="tx-item">
+        <div style="float:left"> Reference </div>
+        <div style="float:right"> {{payment.transactionId}} </div>
+        </div>
+        <hr class="gray-rule">
+
+        <div class="tx-item">
+        <div style="float:left"> Date </div>
+        <div style="float:right"> {{paymentDate}} </div>
+        </div>
+        <hr class="gray-rule">
+
+        <div class="tx-item">
+        <div style="float:left"> Payment Method </div>
+        <div style="float:right"> {{payment.paymentType}} </div>
+        </div>
+        <hr class="gray-rule">
+
+        <div class="tx-item">
+        <div style="float:left"> Reference </div>
+        <div style="float:right"> {{payment.transactionId}} </div>
+        </div>
+    </div>
+    </div>
+    <div style="text-align: center; padding: 50px 0px;"> If you have any issues with payment, kindly reply this email or send an email to <span style="text-decoration-line: underline">support@surveyengine.com</span> </div>
+  </div>
+</body>
+</html>
