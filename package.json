@@ -4,12 +4,14 @@
   "description": "Patient survey feedback and NPS score",
   "main": "index.js",
   "scripts": {
-    "start": "npx ts-node node dist/src/main.js",
+    "start": "node dist/main.js",
+  "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build",    
     "start:dev": "nest start --watch",
     "copy-assets": "copyfiles -u 1 \"src/public/**/*\" \"src/views/**/*\" dist",
     "test": "jest",
-    "build": "tsc nest build && npm run copy-assets",
-     "start:prod": "node dist/src/main.js"
+    "build": "tsc && npm run copy-assets",
+    "start:prod": "npm run build && npm run start"
+    
   },
   "keywords": [
     "Survey Distribution",

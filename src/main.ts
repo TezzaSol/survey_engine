@@ -35,7 +35,7 @@ async function bootstrap() {
       defaultLayout: false,
       layoutsDir: path.join(__dirname, "..", "views", "layouts"),
       partialsDir: partialsDir,
-    }),
+    })
   );
 
   app.setBaseViewsDir(path.join(__dirname, "..", "views"));
@@ -43,13 +43,14 @@ async function bootstrap() {
   app.setViewEngine("hbs");
 
   const config = new DocumentBuilder()
-    .setTitle('Median')
-    .setDescription('Tezza Survey API description')
-    .setVersion('0.1')
+    .setTitle("Median")
+    .setDescription("Tezza Survey API description")
+    .setVersion("0.1")
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup("api", app, document);
+
 
   await app.listen(3000);
 }
