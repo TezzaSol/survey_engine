@@ -9,7 +9,6 @@
     "start:dev": "nest start --watch",
     "copy-assets": "copyfiles -u 1 \"src/public/**/*\" \"src/views/**/*\" dist",
     "test": "jest",
-    "build": "tsc && npm run copy-assets",
     "start:prod": "npm run build && npm run start"
     
   },
