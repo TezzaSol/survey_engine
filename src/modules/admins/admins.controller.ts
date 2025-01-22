@@ -31,8 +31,9 @@ import { UserRole } from "../../shared/enums/user-role.enum";
 import { Roles } from "../../common/decorators/role.decorator";
 import { ResponseData } from "../../shared/interfaces";
 import { UserEntity } from "../users/entities/user.entity";
-import { FileInterceptor } from "@nestjs/platform-express";
+import { FileInterceptor, Multer } from "@nestjs/platform-express";
 import { CloudinaryService } from "../../shared/services/cloudinary.service";
+import { Response } from "express";
 
 
 @UseGuards(RolesGuard)
@@ -145,7 +146,7 @@ export class AdminsController {
   @Patch("upload-logo")
   @UseInterceptors(FileInterceptor("logo"))
   async uploadLogo(
-    @UploadedFile() logo: Express.Multer.File,
+    @UploadedFile() logo: Multer.File,
     @Request() req
   ): Promise<ResponseData> {
     const id = req.user.sub;
