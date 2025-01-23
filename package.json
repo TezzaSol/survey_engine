@@ -4,7 +4,7 @@
   "description": "Patient survey feedback and NPS score",
   "main": "index.js",
   "scripts": {
-    "start": "npm run start:prod",
+    "start": "npx ts-node node dist/src/main.js",
     "build": "tsc",
     "start:prod": "node dist/src/main.js",
     "heroku-postbuild": "npm run build",
