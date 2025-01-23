@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run start:prod",
-    "start:prod": "node dist/main",
+     "build": "tsc",
+  "start:prod": "node dist/main",
+  "heroku-postbuild": "npm run build",
     "start:dev": "nest start --watch",
     "test": "jest"
  
