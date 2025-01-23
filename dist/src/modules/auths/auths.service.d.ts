@@ -1,4 +1,4 @@
-import { PrismaService } from "src/shared/services/prisma.service";
+import { PrismaService } from "../shared/services/prisma.service";
 export declare class AuthsService {
     private prisma;
     constructor(prisma: PrismaService);
