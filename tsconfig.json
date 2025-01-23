@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
-    "baseUrl": "./",
+   "baseUrl": ".",
     "paths": {
-      "src/*": ["./src/*"],
+      "src/*": ["src/*"],
       "@auth/*": ["src/auth/*"],
       "@shared/*": ["src/shared/*"]
     },
