@@ -5,12 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run start:prod",
-     "build": "tsc",
-  "start:prod": "node dist/main.ts",
-  "heroku-postbuild": "npm run build",
+    "build": "tsc",
+    "start:prod": "node dist/src/main.js",
+    "heroku-postbuild": "npm run build",
     "start:dev": "nest start --watch",
     "test": "jest"
- 
   },
   "engines": {
     "node": "16.x",
