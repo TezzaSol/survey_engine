@@ -3,16 +3,10 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "paths": {
-      "src/*": ["./src/*"]
-
-      // "*": ["*", "src/*"],
-      //   "@auth/*": ["auth/*"],
-      //   "@shared/*": ["shared/*"]
+      "src/*": ["./src/*"],
+      "@auth/*": ["src/auth/*"],
+      "@shared/*": ["src/shared/*"]
     },
-    // "paths": {
-    //   "@auth/*": ["auth/*"],
-    //   "@shared/*": ["shared/*"]
-    // },
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
@@ -21,8 +15,6 @@
     "allowSyntheticDefaultImports": true,
     "target": "ES2021",
     "sourceMap": true,
-    // "outDir": "./dist",
-    // "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": false,

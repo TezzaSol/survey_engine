@@ -4,12 +4,12 @@
   "description": "Patient survey feedback and NPS score",
   "main": "index.js",
   "scripts": {
-    "start": "npx ts-node node dist/src/main.js",
-    "build": "tsc",
-    "start:prod": "node dist/src/main.js",
-    "heroku-postbuild": "npm run build",
-    "start:dev": "nest start --watch",
-    "test": "jest"
+  "start": "node dist/src/main.js",
+  "build": "tsc",
+  "start:prod": "node -r tsconfig-paths/register dist/src/main.js",
+  "heroku-postbuild": "npm run build",
+  "start:dev": "nest start --watch",
+  "test": "jest"
   },
   "engines": {
     "node": "16.x",
