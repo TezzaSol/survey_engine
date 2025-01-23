@@ -3,9 +3,11 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "paths": {
-      "*": ["*", "src/*"],
-        "@auth/*": ["auth/*"],
-        "@shared/*": ["shared/*"]
+      "src/*": ["./src/*"]
+
+      // "*": ["*", "src/*"],
+      //   "@auth/*": ["auth/*"],
+      //   "@shared/*": ["shared/*"]
     },
     // "paths": {
     //   "@auth/*": ["auth/*"],
