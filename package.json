@@ -4,12 +4,11 @@
   "description": "Patient survey feedback and NPS score",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/src/main.js",
+    "start": "npm run start:prod",
+    "start:prod": "node dist/main",
     "start:dev": "nest start --watch",
-    "copy-assets": "copyfiles -u 1 \"src/public/**/*\" \"src/views/**/*\" dist",
-    "test": "jest",
-    "build": "tsc && npm run copy-assets",
-    "heroku-postbuild": "npm run build"
+    "test": "jest"
+ 
   },
   "engines": {
     "node": "16.x",
@@ -26,7 +25,8 @@
   "license": "ISC",
   "devDependencies": {
     "@nestjs/testing": "^10.3.7",
-    "@types/jest": "^29.5.12",
+    "@types/jest": "^29.5.14",
+    "@types/multer": "^1.4.12",
     "jest": "^29.5.0",
     "prettier": "3.2.5"
   },
