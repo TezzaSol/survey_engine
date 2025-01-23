@@ -1,0 +1,52 @@
+import { MailGunService } from '../../shared/services/mailgun.service';
+import { PrismaService } from '../../shared/services/prisma.service';
+import { CreatePaymentDto } from './dtos/create-payment.dto';
+import { ResponseData } from '../../shared/interfaces';
+import { Response } from "express";
+export declare class PaymentService {
+    private prisma;
+    private mailGunService;
+    constructor(prisma: PrismaService, mailGunService: MailGunService);
+    createPaymentDto(userId: string, createPaymentDto: CreatePaymentDto): Promise<ResponseData>;
+    findAll(): Promise<{
+        id: string;
+        email: string;
+        amount: string;
+        transactionId: string;
+        paymentStatus: string;
+        txRef: string;
+        flowRef: string;
+        chargedAmount: string;
+        chargeResponseCode: string;
+        chargeResponseMessage: string;
+        currency: string;
+        paymentType: string;
+        plan: string;
+        isActive: boolean;
+        billingCycle: import(".prisma/client").$Enums.BillingCycle;
+        createdById: string;
+        createdAt: Date;
+    }[]>;
+    findById(id: string): Promise<{
+        id: string;
+        email: string;
+        amount: string;
+        transactionId: string;
+        paymentStatus: string;
+        txRef: string;
+        flowRef: string;
+        chargedAmount: string;
+        chargeResponseCode: string;
+        chargeResponseMessage: string;
+        currency: string;
+        paymentType: string;
+        plan: string;
+        isActive: boolean;
+        billingCycle: import(".prisma/client").$Enums.BillingCycle;
+        createdById: string;
+        createdAt: Date;
+    }[]>;
+    getTransactionDetailsAsPDF(transactionId: string, res: Response): Promise<void>;
+    transactionDetailsAsPDF(transactionId: string, res: Response): Promise<void>;
+    getTransactionDetailsAsPDF2(transactionId: string, res: Response): Promise<void>;
+}

@@ -1,0 +1,16 @@
+    {{> mailHeader }}
+      <div class="email-body">
+        <p >Hi {{user}},</p>
+        <p>
+         Your role in has been updated by the Admin to {{newRole}}. You now have access to new permissions and tools tailored to this role.
+        </p>
+        <p>
+         If you have questions, feel free to reach out to your Admin.
+        </p>
+
+        <p>
+          If you didn't sign up for this account, please ignore this message.
+        </p>
+        <p>Best regards,<br />The {{appName}} Team</p>
+      </div>
+{{> mailFooter }}

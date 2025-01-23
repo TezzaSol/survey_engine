@@ -1,0 +1,19 @@
+    {{> mailHeader }}
+      <div class="email-body">
+        <p>Hi {{user}},</p>
+        <p>
+         You have been invited you to participate in a survey.
+        </p>
+        <p>
+         To take the survey, just click the link below:
+        </p>
+
+        <!-- Call to Action Button -->
+        <a href="{{surveyUrl}}" class="button">Take Survey</a>
+
+        <p>
+          If you didn't sign up for this account, please ignore this message.
+        </p>
+        <p>Thank you for your participation!<br />The {{appName}} Team</p>
+      </div>
+{{> mailFooter }}

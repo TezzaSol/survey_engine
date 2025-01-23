@@ -1,0 +1,82 @@
+import { ReviewService } from "./review.service";
+import { CreateReviewDto } from "./dto/create-review.dto";
+import { UpdateReviewDto } from "./dto/update-review.dto";
+export declare class ReviewController {
+    private readonly reviewService;
+    constructor(reviewService: ReviewService);
+    create(createReviewDto: CreateReviewDto): Promise<{
+        id: string;
+        note: string;
+        rating: number;
+        email: string;
+        countryCode: string;
+        phoneNumber: string;
+        surveyId: string;
+        createdAt: Date;
+        updatedAt: Date;
+        recipientId: string;
+        nps: number;
+        npsType: string;
+        adminId: string;
+    }>;
+    findAll(req: any, npsType?: string): Promise<{
+        id: string;
+        note: string;
+        rating: number;
+        email: string;
+        countryCode: string;
+        phoneNumber: string;
+        surveyId: string;
+        createdAt: Date;
+        updatedAt: Date;
+        recipientId: string;
+        nps: number;
+        npsType: string;
+        adminId: string;
+    }[]>;
+    findOne(id: string): Promise<{
+        id: string;
+        note: string;
+        rating: number;
+        email: string;
+        countryCode: string;
+        phoneNumber: string;
+        surveyId: string;
+        createdAt: Date;
+        updatedAt: Date;
+        recipientId: string;
+        nps: number;
+        npsType: string;
+        adminId: string;
+    }>;
+    update(id: string, updateReviewDto: UpdateReviewDto): Promise<{
+        id: string;
+        note: string;
+        rating: number;
+        email: string;
+        countryCode: string;
+        phoneNumber: string;
+        surveyId: string;
+        createdAt: Date;
+        updatedAt: Date;
+        recipientId: string;
+        nps: number;
+        npsType: string;
+        adminId: string;
+    }>;
+    remove(id: string): Promise<{
+        id: string;
+        note: string;
+        rating: number;
+        email: string;
+        countryCode: string;
+        phoneNumber: string;
+        surveyId: string;
+        createdAt: Date;
+        updatedAt: Date;
+        recipientId: string;
+        nps: number;
+        npsType: string;
+        adminId: string;
+    }>;
+}

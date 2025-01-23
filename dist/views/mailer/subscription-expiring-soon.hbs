@@ -1,0 +1,13 @@
+    {{> mailHeader }}
+      <div class="email-body">
+        <p >Hi {{user}},</p>
+        <p>
+          Just a heads-up: Your subscription for {{plan}} will expire on {{expirationDate}}. Keep your surveys active by renewing now to avoid any interruption.
+        </p>
+        <p>
+          If you have any questions, we’re here to help!
+        </p>
+
+        <p>Best,<br />The {{appName}} Team</p>
+      </div>
+{{> mailFooter }}
