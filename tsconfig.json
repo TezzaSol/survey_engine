@@ -3,7 +3,9 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "paths": {
-      "*": ["*", "src/*"]
+      "*": ["*", "src/*"],
+        "@auth/*": ["auth/*"],
+        "@shared/*": ["shared/*"]
     },
     // "paths": {
     //   "@auth/*": ["auth/*"],
