@@ -9,7 +9,7 @@ import {
   HttpStatus,
 } from "@nestjs/common";
 import { Role, Status, User } from "@prisma/client";
-import { PrismaService } from "../../shared/services/prisma.service";
+import { PrismaService } from "src/shared/services/prisma.service";
 import { CreateUserDto } from "./dtos/create-admin.dto";
 import { compare, hash } from "bcryptjs";
 import {

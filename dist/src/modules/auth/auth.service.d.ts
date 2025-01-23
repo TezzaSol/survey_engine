@@ -1,5 +1,5 @@
 import { User } from "@prisma/client";
-import { PrismaService } from "../../shared/services/prisma.service";
+import { PrismaService } from "src/shared/services/prisma.service";
 import { CreateUserDto } from "./dtos/create-admin.dto";
 import { LoginUserDto, PasswordResetDto, ChangePassDto, TwoFADto } from "./dtos/login-user.dto";
 import { JwtService } from "@nestjs/jwt";

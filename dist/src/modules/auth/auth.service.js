@@ -38,7 +38,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
 const client_1 = require("@prisma/client");
-const prisma_service_1 = require("../../shared/services/prisma.service");
+const prisma_service_1 = require("src/shared/services/prisma.service");
 const bcryptjs_1 = require("bcryptjs");
 const jwt_1 = require("@nestjs/jwt");
 const utils_1 = require("../../shared/utils");
