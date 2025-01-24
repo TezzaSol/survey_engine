@@ -12,6 +12,9 @@
     "rootDir": "./src", // Specify the root directory of input files
     "baseUrl": "./", // Base directory to resolve non-relative module names
     "paths": {
+      "src/*": ["src/*"],
+      "@auth/*": ["src/auth/*"],
+      "@shared/*": ["src/shared/*"],
       "*": ["node_modules/*", "src/types/*"] // Path mapping for module resolution
     },
     "module": "commonjs",
