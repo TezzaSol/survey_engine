@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/main",
-"start:prod": "npm run build && node --max-old-space-size=4096 dist/main.js",
+"start:prod": "npm run build && node --inspect dist/main.js",
     "build": "tsc",
     "heroku-postbuild": "npm install --only=dev && npm run build",
     "start:dev": "nest start --watch",
