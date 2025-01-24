@@ -26,7 +26,7 @@ import { AuthService } from "./auth.service";
 import { User } from "@prisma/client";
 import { Public } from "../../common/decorators/public.decorator";
 import { ApiOperation, ApiResponse } from "@nestjs/swagger";
-import { ResponseData } from "src/shared/interfaces";
+import { ResponseData } from "../../shared/interfaces";
 import { AuthGuard } from "../../common/guards/auth.guard";
 import { UserEntity } from "../users/entities/user.entity";
 import { CreateAdminDto } from "./dtos/new-create-admin.dto";

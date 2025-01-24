@@ -9,7 +9,6 @@ import {
   HttpStatus,
 } from "@nestjs/common";
 import { Role, Status, User } from "@prisma/client";
-import { PrismaService } from "src/shared/services/prisma.service";
 import { CreateUserDto } from "./dtos/create-admin.dto";
 import { compare, hash } from "bcryptjs";
 import {
@@ -28,6 +27,7 @@ import { CreateAdminDto } from "./dtos/new-create-admin.dto";
 import * as geoip from "geoip-lite"; // Optional: for IP-based location tracking
 import * as speakeasy from "speakeasy";
 import * as qrcode from "qrcode";
+import { PrismaService } from "../../shared/services/prisma.service";
 
 @Injectable()
 export class AuthService {

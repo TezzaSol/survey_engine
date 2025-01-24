@@ -7,8 +7,8 @@ import {
   Req,
   Request,
 } from "@nestjs/common";
-import { Public } from "src/common/decorators/public.decorator";
-import { GoogleService } from "src/shared/services/google.service";
+import { Public } from "../../common/decorators/public.decorator";
+import { GoogleService } from "../../shared/services/google.service";
 import { AuthsService } from "./auths.service";
 import { Response } from "express";
 

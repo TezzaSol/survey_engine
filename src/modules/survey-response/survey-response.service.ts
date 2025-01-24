@@ -4,7 +4,7 @@ import { SurveyResponseRepository } from "./survey-response.repository";
 import { CreateSurveyResponseDto } from "./dto/create-survey-response.dto";
 import { CreateSurveyResponsesDto } from "./dto/create-survey-responses.dto";
 import { PrismaService } from "../../shared/services/prisma.service";
-import { PageParams, PagedResponse } from "src/shared/interfaces";
+import { PageParams, PagedResponse } from "../../shared/interfaces";
 import { SurveyQuestionType } from "@prisma/client";
 
 @Injectable()

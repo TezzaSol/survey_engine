@@ -16,7 +16,7 @@ import { RecipientService } from "./recipient.service";
 import { Prisma, Recipient } from "@prisma/client";
 import { CreateRecipientDto } from "./dto/create-recipient.dto";
 import { UpdateRecipientDto } from "./dto/update-recipient.dto";
-import { PageParams, PagedResponse } from "src/shared/interfaces";
+import { PageParams, PagedResponse } from "../../shared/interfaces";
 import { SendInviteDto } from "./dto/send-invite.dto";
 import { ScheduleSurveyDto } from "./dto/schedule-survey.dto";
 import { FileInterceptor } from "@nestjs/platform-express";

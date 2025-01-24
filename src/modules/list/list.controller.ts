@@ -15,7 +15,7 @@ import { ListService } from "./list.service";
 import { List } from "@prisma/client";
 import { CreateListDto } from "./dto/create-list.dto";
 import { UpdateListDto } from "./dto/update-list.dto";
-import { PagedResponse, PageParams } from "src/shared/interfaces";
+import { PagedResponse, PageParams } from "../../shared/interfaces";
 
 @Controller("lists")
 export class ListController {

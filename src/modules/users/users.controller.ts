@@ -14,7 +14,7 @@ import { UpdateUserDto } from './dtos/user.dto';
 import { RolesGuard } from "../../common/guards/role.guard";
 import { UserRole } from "../../shared/enums/user-role.enum";
 import { Roles } from "../../common/decorators/role.decorator";
-import { ResponseData } from "src/shared/interfaces";
+import { ResponseData } from "../../shared/interfaces";
 import { ChangePasswordDto } from "./dtos/change-password.dto";
 import { ResetPasswordDto } from "./dtos/reset-password.dto";
 import { Public } from "../../common/decorators/public.decorator";

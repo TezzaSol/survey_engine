@@ -5,7 +5,7 @@ import {
   HttpStatus,
   ConflictException,
 } from "@nestjs/common";
-import { PrismaService } from "src/shared/services/prisma.service";
+import { PrismaService } from "../../shared/services/prisma.service";
 import { CreatePlatformDto } from "../platform/dto/create-platform.dto";
 import { UpdatePlatformDto } from "../platform/dto/update-platform.dto";
 
@@ -22,7 +22,7 @@ export class AuthsService {
       throw new HttpException("User not found", HttpStatus.NOT_FOUND);
     }
 
-    if (currentUser && currentUser.role != ("ADMIN" || "TEAMMATE")) {
+    if (currentUser && currentUser.role !== "ADMIN" && currentUser.role !== "TEAMMATE") {
       return { message: "Forbidden, Not authorized" };
     }
 

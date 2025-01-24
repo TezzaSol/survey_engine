@@ -1,19 +1,19 @@
 {
+  "include": ["src/**/*"], // Include all files in the src directory
   "compilerOptions": {
-  //   "outDir": "./dist",
-  //  "baseUrl": ".",
-  //   "paths": {
-  //     "src/*": ["src/*"],
-  //     "@auth/*": ["src/auth/*"],
-  //     "@shared/*": ["src/shared/*"]
-  //   },
-    "outDir": "./dist",                       // Redirect output structure to the directory
-    "rootDir": "./src",                       // Specify the root directory of input files
-    "baseUrl": "./",                          // Base directory to resolve non-relative module names
+    //   "outDir": "./dist",
+    //  "baseUrl": ".",
+    //   "paths": {
+    //     "src/*": ["src/*"],
+    //     "@auth/*": ["src/auth/*"],
+    //     "@shared/*": ["src/shared/*"]
+    //   },
+    "outDir": "./dist", // Redirect output structure to the directory
+    "rootDir": "./src", // Specify the root directory of input files
+    "baseUrl": "./", // Base directory to resolve non-relative module names
     "paths": {
       "*": ["node_modules/*", "src/types/*"] // Path mapping for module resolution
-  },
-  "include": ["src/**/*"],                    // Include all files in the src directory
+    },
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,

@@ -1,0 +1,83 @@
+import { CreateReviewDto } from "./dto/create-review.dto";
+import { UpdateReviewDto } from "./dto/update-review.dto";
+import { PrismaService } from "../../shared/services/prisma.service";
+export declare class ReviewService {
+    private prisma;
+    constructor(prisma: PrismaService);
+    private setNpsType;
+    create(createReviewDto: CreateReviewDto): Promise<{
+        id: string;
+        note: string;
+        rating: number;
+        email: string;
+        countryCode: string;
+        phoneNumber: string;
+        surveyId: string;
+        createdAt: Date;
+        updatedAt: Date;
+        recipientId: string;
+        nps: number;
+        npsType: string;
+        adminId: string;
+    }>;
+    findAll(userId: string, npsType?: string): Promise<{
+        id: string;
+        note: string;
+        rating: number;
+        email: string;
+        countryCode: string;
+        phoneNumber: string;
+        surveyId: string;
+        createdAt: Date;
+        updatedAt: Date;
+        recipientId: string;
+        nps: number;
+        npsType: string;
+        adminId: string;
+    }[]>;
+    findOne(id: string): Promise<{
+        id: string;
+        note: string;
+        rating: number;
+        email: string;
+        countryCode: string;
+        phoneNumber: string;
+        surveyId: string;
+        createdAt: Date;
+        updatedAt: Date;
+        recipientId: string;
+        nps: number;
+        npsType: string;
+        adminId: string;
+    }>;
+    update(id: string, updateReviewDto: UpdateReviewDto): Promise<{
+        id: string;
+        note: string;
+        rating: number;
+        email: string;
+        countryCode: string;
+        phoneNumber: string;
+        surveyId: string;
+        createdAt: Date;
+        updatedAt: Date;
+        recipientId: string;
+        nps: number;
+        npsType: string;
+        adminId: string;
+    }>;
+    remove(id: string): Promise<{
+        id: string;
+        note: string;
+        rating: number;
+        email: string;
+        countryCode: string;
+        phoneNumber: string;
+        surveyId: string;
+        createdAt: Date;
+        updatedAt: Date;
+        recipientId: string;
+        nps: number;
+        npsType: string;
+        adminId: string;
+    }>;
+}

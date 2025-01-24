@@ -12,7 +12,7 @@ import { PrismaService } from "../../shared/services/prisma.service";
 import { Recipient, Prisma } from "@prisma/client";
 import { CreateRecipientDto } from "./dto/create-recipient.dto";
 import { UpdateRecipientDto } from "./dto/update-recipient.dto";
-import { PageParams, PagedResponse } from "src/shared/interfaces";
+import { PageParams, PagedResponse } from "../../shared/interfaces";
 import { SendInviteDto } from "../recipient/dto/send-invite.dto";
 import { Utils } from "../../shared/utils";
 import { ResponseData } from "../../shared/interfaces";

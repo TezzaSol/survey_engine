@@ -12,7 +12,7 @@ import { Public } from "../../common/decorators/public.decorator";
 import { CreateSurveyResponsesDto } from "./dto/create-survey-responses.dto";
 import { Roles } from "../../common/decorators/role.decorator";
 import { UserRole } from "../../shared/enums/user-role.enum";
-import { PageParams, PagedResponse } from "src/shared/interfaces";
+import { PageParams, PagedResponse } from "../../shared/interfaces";
 import * as useragent from "express-useragent";
 
 @Controller("survey-response")
