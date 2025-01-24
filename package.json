@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/main",
-   "build": "tsc",
-   "heroku-postbuild": "npm install --only=dev && npm run build",
+    "start:prod": "node dist/main.js",
+    "build": "tsc",
+    "heroku-postbuild": "npm install --only=dev && npm run build",
     "start:dev": "nest start --watch",
     "test": "jest"
   },
